@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Investors</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+    <div class="container">
+        <h2 class="mb-4">Investor List</h2>
+
+        <form method="get" action="/investors" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search by name..." th:value="${search}">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Stock</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="investor : ${investors}">
+                    <td th:text="${investor.id}"></td>
+                    <td th:text="${investor.name}"></td>
+                    <td th:text="${investor.email}"></td>
+                    <td th:text="${investor.stockname}"></td>
+                    <td th:text="${investor.investmentAmount}"></td>
+                    <td th:text="${investor.investmentDate}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
